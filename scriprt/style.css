@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-body {
+    width: 290px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-around;
+    background-color: #000;
+    border: #FFB800 solid 2px;
+    border-radius: 12px;
+    padding: 10px;
+
+}
+.svg-del{
+    width: 20px;
+    height: 20px;
+}
