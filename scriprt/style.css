@@ -1,17 +1,25 @@
+@font-face {
+    font-family: 'M';
+    src: url('/fonts/Michroma-Regular.ttf');
+}
 body {
+    font-family: M;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+button{
+    padding: 0;
+}
 .main-body {
     width: 290px;
-    height: 450px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: space-around;
+    justify-content: center;
     background-color: #000;
-    border: #FFB800 solid 2px;
+    border: #FFB800 solid 5px;
     border-radius: 12px;
     padding: 10px;
 
@@ -19,4 +27,36 @@ body {
 .svg-del{
     width: 20px;
     height: 20px;
+}
+.buttons {
+    font-family: M;
+    width: 50px;
+    height: 50px;
+    background: #FFD569;
+    border-radius: 12px; 
+}
+.box-bottons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-direction: column;
+}
+.line {
+    display: flex;
+    gap: 10px;
+    justify-content:space-around ;
+}
+.zero {
+    width: 130px;
+}
+.buttons:hover {
+    background-color: azure;
+    opacity: 0.9;
+    transition: 1s;
+    cursor: pointer;
+}
+.screen {
+    height: 50px;
+    font-size: 30px;
+    font-family: M;
 }
