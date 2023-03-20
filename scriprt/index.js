@@ -6,26 +6,25 @@ function clearScreen () {
     string = ''
 }
 function delOneElem () { 
-  return string = string.slice(0,-1)
+  string = string.slice(0,-1)
+  return screen.value = string
 }
 function numProsent () {
-    string = Number(string)/100
-}
-function equleNumbers () {
-    for (let num of string) {
-        if (num!= '+' || num!='-'||num!='*'||num!='/') {
-
-        }
+    if (/\*|\-|\+|\//.test(string)) {
+        string = Number(string.slice(0,-1)/100) 
+        return screen.value = `${string}`
+    } else {string = Number(string)/100
+    return screen.value = `${string}`
     }
 }
-function repet () {
-    screen.value = string
-    setTimeout(repet, 100)
+function equleNumbers () {
+    string = eval(string)
+    return screen.value = `${string}`
 }
-repet()
 function findBut () {
     button.forEach((val, index)=> {
         val.addEventListener('click', ()=> {
+            string = `${string}`
              if (index === 0) {
                 return clearScreen()
              }
@@ -41,34 +40,42 @@ function findBut () {
              if (index === 18) {
                 return equleNumbers()
              }
-             if (string.slice(-1) === '/' && index === 3 || string.slice(-1) === '' && index === 3) {
-                return
+             if (string.slice(-1) === '/' && index === 3 || string.length=== 0 && index === 3) {
+                return 
              }
-             if (string.slice(-1) === '*' && index === 7|| string.slice(-1) === '' && index === 7) {
-                return
+             if (string.slice(-1) === '*' && index === 7||string.length=== 0 && index === 7) {
+                return 
+             }
+             if (string.slice(-1) === '.' && index === 17 || string.slice(-1) === '' && index === 17) {
+                return 
              }
              if (string.slice(-1) === '-' && index === 11) {
-                return
+                return 
              }
              if (string.slice(-1) === '+' && index === 15) {
-                return
+                return 
              }
              if (string.slice(-1)=== '/'||string.slice(-1)=== '*'|| string.slice(-1)=== '-'||string.slice(-1)=== '+'){
                 if (index === 3 && string.match(/\*|\-|\+/g)[string.length -1] !='/' && string != '') {
                     string = string.slice(0,-1)
                  } 
     
-                 if (index === 7 && string.match(/\/|\-|\+/g)[string.length -1] !='*') {
+                 if (index === 7 && string.match(/\/|\-|\+|\./g)[string.length -1] !='*') {
                     string = string.slice(0,-1)
                  }
-                 if (index === 11 && string.match(/\*|\/|\+/g)[string.length -1] !='-') {
+                 if (index === 11 && string.match(/\*|\/|\+|\./g)[string.length -1] !='-') {
                     string = string.slice(0,-1)
                  }
-                 if (index === 15 && string.match(/\*|\-|\//g)[string.length -1] !='+') {
+                 if (index === 15 && string.match(/\*|\-|\/|\./g)[string.length -1] !='+') {
+                    string =string = string.slice(0,-1)
+                 }
+                 if (index === 17 && string.match(/\*|\-|\/|\.|\+/g)[string.length -1] !='.') {
                     string =string = string.slice(0,-1)
                  }
              } 
+             
              string = string +  val.textContent
+             screen.value = string
         })
     })
 
