@@ -1,6 +1,7 @@
 const button = document.querySelectorAll('.buttons')
 const screen = document.querySelector('.screen')
 let string = ''
+let array =['1','2','3','4','5','6','7','8','9','0','-','+','/','*','.','Enter', 'NumpadEnter']
 function clearScreen () {
     screen.value = ''
     string = ''
@@ -55,7 +56,7 @@ function findBut () {
              if (string.slice(-1) === '+' && index === 15) {
                 return 
              }
-             if (string.slice(-1)=== '/'||string.slice(-1)=== '*'|| string.slice(-1)=== '-'||string.slice(-1)=== '+'){
+             if (string.slice(-1)=== '/'||string.slice(-1)=== '*'|| string.slice(-1)=== '-'||string.slice(-1)=== '+'||string.slice(-1)=== '.'){
                 if (index === 3 && string.match(/\*|\-|\+/g)[string.length -1] !='/' && string != '') {
                     string = string.slice(0,-1)
                  } 
@@ -69,15 +70,72 @@ function findBut () {
                  if (index === 15 && string.match(/\*|\-|\/|\./g)[string.length -1] !='+') {
                     string =string = string.slice(0,-1)
                  }
-                 if (index === 17 && string.match(/\*|\-|\/|\.|\+/g)[string.length -1] !='.') {
+                 if (index === 17 && string.match(/\*|\-|\/|\+/g)[string.length -1] !='.') {
                     string =string = string.slice(0,-1)
                  }
              } 
-             
              string = string +  val.textContent
              screen.value = string
         })
     })
 
 }
+function keyWrite () {
+   document.addEventListener('keydown', (e)=> {
+      string = `${string}`
+      if (e.key === 'Backspace') {
+         return delOneElem()
+      }
+      if (e.key === '%') {
+         return numProsent()
+      }   
+      if (string === '0') {
+         return string = string+'.'
+      }
+      if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+         return equleNumbers()
+      }
+      if (string.slice(-1) === '/' && e.key === '/' || string.length=== 0 && e.key === '/') {
+         return 
+      }
+      if (string.slice(-1) === '*' && e.key === '*'||string.length=== 0 && e.key === "*") {
+         return 
+      }
+      if (string.slice(-1) === '.' && e.key === '.' || string.slice(-1) === '' && e.key === '.') {
+         return 
+      }
+      if (string.slice(-1) === '-' && e.key === '-') {
+         return 
+      }
+      if (string.slice(-1) === '+' && e.key === '+') {
+         return 
+      }
+      if (string.slice(-1)=== '/'||string.slice(-1)=== '*'|| string.slice(-1)=== '-'||string.slice(-1)=== '+'||string.slice(-1)=== '.'){
+         if (e.key === '/' && string.match(/\*|\-|\+/g)[string.length -1] !='/' && string != '') {
+             string = string.slice(0,-1)
+          } 
+
+          if (e.key === '*' && string.match(/\/|\-|\+|\./g)[string.length -1] !='*') {
+             string = string.slice(0,-1)
+          }
+          if (e.key === '-' && string.match(/\*|\/|\+|\./g)[string.length -1] !='-') {
+             string = string.slice(0,-1)
+          }
+          if (e.key === '+' && string.match(/\*|\-|\/|\./g)[string.length -1] !='+') {
+             string =string = string.slice(0,-1)
+          }
+          if (e.key === '.' && string.match(/\*|\-|\/|\.|\+/g)[string.length -1] !='.') {
+             string =string = string.slice(0,-1)
+          }
+      } 
+      for (let key of array) {
+         if (e.key === key) {
+            string = string +  e.key
+            screen.value = string
+         }
+       }
+      
+   })
+}
+keyWrite()
 findBut()
