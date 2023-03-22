@@ -7,6 +7,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    gap: 10px;
 }
 button{
     padding: 0;
@@ -60,4 +62,29 @@ button{
     font-size: 30px;
     font-family: M;
     border-radius: 14px
+}
+.story {
+    display:flex;
+    background-color: #f8fffb;
+    flex-direction: column;
+    gap: 10px;
+    height: 450px;
+    width: 200px;
+    overflow: auto;
+    border: #d6eef2 solid 5px;
+    border-radius: 12px;
+}
+
+.listE {
+    border-bottom: #000 solid 2px;
+}
+.list {
+    background-color: #e6faff;
+    cursor: pointer;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 15px;
 }

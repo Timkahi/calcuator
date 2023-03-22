@@ -1,7 +1,12 @@
 const button = document.querySelectorAll('.buttons')
 const screen = document.querySelector('.screen')
+const story = document.querySelector('.story')
 let string = ''
 let array =['1','2','3','4','5','6','7','8','9','0','-','+','/','*','.','Enter', 'NumpadEnter']
+let stringExspression = []
+let stringEqual = []
+
+
 function clearScreen () {
     screen.value = ''
     string = ''
@@ -19,12 +24,16 @@ function numProsent () {
     }
 }
 function equleNumbers () {
-    string = eval(string)
-    return screen.value = `${string}`
+   stringExspression.push(string)
+   string = eval(string)
+   screen.value = `${string}`
+   stringEqual.push(`${string}`)
+   return stringEqual, stringExspression
 }
 function findBut () {
     button.forEach((val, index)=> {
         val.addEventListener('click', ()=> {
+         tupOnElemStory()
             string = `${string}`
              if (index === 0) {
                 return clearScreen()
@@ -39,7 +48,24 @@ function findBut () {
                 return string = string+'.'
              }
              if (index === 18) {
-                return equleNumbers()
+               equleNumbers()
+             }
+             if (index === 18 ) {
+               let divbox = document.createElement('div')
+               let divExpresssion = document.createElement('div')
+               let divEquel = document.createElement('div')
+               divExpresssion.classList.add('listE')
+               divEquel.classList.add('list')
+               divbox.classList.add('box')
+         
+               for (let i = 0; i< stringEqual.length; i++) {
+                  divExpresssion.textContent = stringExspression[i]
+                  divEquel.textContent = stringEqual[i]
+                  story.append(divbox)
+                  divbox.append(divExpresssion)
+                  divbox.append(divEquel)
+         
+               }
              }
              if (string.slice(-1) === '/' && index === 3 || string.length=== 0 && index === 3) {
                 return 
@@ -83,6 +109,7 @@ function findBut () {
 function keyWrite () {
    document.addEventListener('keydown', (e)=> {
       string = `${string}`
+      tupOnElemStory()
       if (e.key === 'Backspace') {
          return delOneElem()
       }
@@ -139,3 +166,34 @@ function keyWrite () {
 }
 keyWrite()
 findBut()
+function addListOfStory () {
+   document.addEventListener('keydown', (e)=> {
+      if (e.key === 'Enter' || e.key === 'NumpadEnter') {
+         let divbox = document.createElement('div')
+         let divExpresssion = document.createElement('div')
+         let divEquel = document.createElement('div')
+         divExpresssion.classList.add('listE')
+         divEquel.classList.add('list')
+         divbox.classList.add('box')
+
+         for (let i = 0; i< stringEqual.length; i++) {
+            divExpresssion.textContent = stringExspression[i]
+            divEquel.textContent = stringEqual[i]
+            story.append(divbox)
+            divbox.append(divExpresssion)
+            divbox.append(divEquel)
+
+         }
+      }
+   })
+}
+addListOfStory()
+function tupOnElemStory () {
+   const storyLine = document.querySelectorAll('.list')
+   storyLine.forEach((value, index) => {
+      value.addEventListener('click', ()=> {
+         screen.value = stringEqual[index]
+         string = stringEqual[index]
+      })
+   })
+}
