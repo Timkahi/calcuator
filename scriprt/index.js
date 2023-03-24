@@ -1,6 +1,7 @@
 const button = document.querySelectorAll('.buttons')
 const screen = document.querySelector('.screen')
 const story = document.querySelector('.story')
+const svg = document.querySelector('.svg')
 let string = ''
 let array =['1','2','3','4','5','6','7','8','9','0','-','+','/','*','.','Enter', 'NumpadEnter']
 let stringExspression = []
@@ -197,3 +198,14 @@ function tupOnElemStory () {
       })
    })
 }
+function delStory () {
+   svg.addEventListener('click', () => {
+      const del = document.querySelectorAll('.box')
+      stringEqual = []
+      stringExspression = []
+      del.forEach((value) => {
+         story.removeChild(value)
+      })
+   })
+}
+delStory()

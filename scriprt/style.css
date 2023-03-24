@@ -68,11 +68,13 @@ button{
     background-color: #f8fffb;
     flex-direction: column;
     gap: 10px;
-    height: 450px;
+    height: 410px;
     width: 200px;
     overflow: auto;
     border: #d6eef2 solid 5px;
     border-radius: 12px;
+    position: relative;
+    padding-top: 35px;
 }
 
 .listE {
@@ -87,4 +89,19 @@ button{
     flex-direction: column;
     gap: 5px;
     font-size: 15px;
+}
+.svg {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+}
+.delete {
+    width: 34px;
+    height: 34px;
+}
+.svg:hover {
+    transform: rotate(45deg);
 }
