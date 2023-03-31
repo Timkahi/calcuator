@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'M';
-    src: url('/fonts/Michroma-Regular.ttf');
+    src: url('./scriprt/fonts/Michroma-Regular.ttf');
 }
 body {
     font-family: M;
